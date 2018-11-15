@@ -2195,6 +2195,10 @@ menu_group_404 .menu_list{
     background-color: rgb(4, 73, 92);
 }
 
+#auth,#register,#password_remind {
+    display: none;
+}
+
 /* menu footer */
 
 

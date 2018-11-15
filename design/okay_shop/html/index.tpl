@@ -171,21 +171,53 @@
             <img src="design/{$settings->theme|escape}/images/logo{if $language->label}_{$language->label}{/if}.png" alt="{$settings->site_name|escape}"/>
         </a>*}
 
+
+        {*Ajax-auth*}
+
         <div class="account mobile-hidden">
             {if $user}
                 {* User account *}
+                <a href="user/logout" class="button fright" data-language="user_logout">Выйти</a>
                 <a class="account_link" href="{$lang_link}user">
                     <span class="small-hidden" data-language="index_account">{$lang->index_account}</span>
                     <span class="account_name small-hidden">{$user->name|escape}</span>
                 </a>
             {else}
                 {* Login *}
+                <a class="account_link modalbox" href="#auth" rel="nofollow"  title="{$lang->index_login}">
+                    {*<span class="small-hidden" data-language="index_account">{$lang->index_account}</span>*}
+                    <span class="account_name small-hidden" data-language="index_login">{$lang->index_login}</span>
+                </a>
+            {/if}
+        </div>
+
+        {*Ajax-auth end*}
+
+        <div id="popup-auth" class="popup-auth">
+            <!-- Login -->
+            {include file='_auth-popup.tpl'}
+            <!-- Register -->
+            {include file='_register-popup.tpl'}
+            <!-- Register -->
+            {include file='_pass-remind.tpl'}
+        </div>
+
+
+        {*<div class="account mobile-hidden">
+            {if $user}
+                *}{* User account *}{*
+                <a class="account_link" href="{$lang_link}user">
+                    <span class="small-hidden" data-language="index_account">{$lang->index_account}</span>
+                    <span class="account_name small-hidden">{$user->name|escape}</span>
+                </a>
+            {else}
+                *}{* Login *}{*
                 <a class="account_link" href="javascript:;" onclick="document.location.href = '{$lang_link}user/login'" title="{$lang->index_login}">
                     <span class="small-hidden" data-language="index_account">{$lang->index_account}</span>
                     <span class="account_name small-hidden" data-language="index_login">{$lang->index_login}</span>
                 </a>
             {/if}
-        </div>
+        </div>*}
 
         {* Shop opening hours *}
         <div class="times">
@@ -373,6 +405,7 @@
 {* Fancybox *}
 <link href="design/{$settings->theme|escape}/css/jquery.fancybox.min.css{if $css_version}?v={$css_version}{/if}" rel="stylesheet">
 <script src="design/{$settings->theme|escape}/js/jquery.fancybox.min.js{if $js_version}?v={$js_version}{/if}" defer></script>
+<script src="design/okay_shop/js/auth.js" type="text/javascript"></script>
 
 {* Autocomplete *}
 <script src="design/{$settings->theme}/js/jquery.autocomplete-min.js{if $js_version}?v={$js_version}{/if}" defer></script>
