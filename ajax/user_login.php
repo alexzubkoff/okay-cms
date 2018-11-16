@@ -4,7 +4,7 @@ chdir('..');
 require_once('api/Okay.php');
 $okay = new Okay();
 
-if (!empty($_POST['email'])) {
+if (isset($_POST['email'])) {
     $request = new StdClass;
     $request->email = $okay->request->post('email');
     $request->password = $okay->request->post('password');
